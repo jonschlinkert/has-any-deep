@@ -1,0 +1,50 @@
+{
+  "name": "has-any-deep",
+  "description": "Return true if `key` exists deeply on the given object. ",
+  "version": "0.1.0",
+  "homepage": "https://github.com/jonschlinkert/has-any-deep",
+  "author": {
+    "name": "Jon Schlinkert",
+    "url": "https://github.com/jonschlinkert"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jonschlinkert/has-any-deep.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jonschlinkert/has-any-deep/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/jonschlinkert/has-any-deep/blob/master/LICENSE-MIT"
+    }
+  ],
+  "main": "index.js",
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "mocha -R spec"
+  },
+  "devDependencies": {
+    "mocha": "*",
+    "should": "^4.0.4",
+    "verb": ">= 0.2.6"
+  },
+  "keywords": [
+    "has",
+    "value",
+    "key",
+    "property",
+    "prop",
+    "keys",
+    "deep",
+    "nested",
+    "object",
+    "has"
+  ],
+  "dependencies": {
+    "reduce-object": "^0.1.2"
+  }
+}
