@@ -12,7 +12,11 @@ var assert = require('assert');
 var hasAnyDeep = require('./');
 
 describe('.hasAnyDeep()', function () {
-  it('should return `true` when the specified nested property exists.', function () {
+  it('should check a for a key in nested objects.', function () {
+    hasAnyDeep({'foo/bar/baz.md': {}}, ['path']).should.be.false;
+    hasAnyDeep({'foo/bar/baz.md': {content: 'this is content'}}, ['path']).should.be.false;
+    hasAnyDeep({'foo/bar/baz.md': {path: 'foo/bar/baz.md'}}, ['path']).should.be.true;
+    hasAnyDeep({'foo/bar/baz.md': {path: 'foo/bar/baz.md', content: 'This is content'}}, ['path', 'content']).should.be.true;
     hasAnyDeep({a: {b: {c: 'foo'}}}, 'a').should.be.true;
     hasAnyDeep({a: {b: {c: 'foo'}}}, 'b').should.be.true;
     hasAnyDeep({a: {b: {c: 'foo'}}}, 'c').should.be.true;
@@ -21,7 +25,7 @@ describe('.hasAnyDeep()', function () {
     hasAnyDeep({a: {b: {c: 'foo', d: {e: {}}}}}, 'e').should.be.true;
   });
 
-  it('should work with an array of props.', function () {
+  it('should check an array of keys against the keys in nested objects.', function () {
     hasAnyDeep({a: {b: {c: 'foo'}}}, ['f', 'a']).should.be.true;
     hasAnyDeep({a: {b: {c: 'foo'}}}, ['b']).should.be.true;
     hasAnyDeep({a: {b: {c: 'foo'}}}, ['c']).should.be.true;
@@ -30,3 +34,4 @@ describe('.hasAnyDeep()', function () {
     hasAnyDeep({a: {b: {c: 'foo', d: {e: {}}}}}, ['e']).should.be.true;
   });
 });
+

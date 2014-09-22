@@ -8,6 +8,10 @@
 'use strict';
 
 var reduce = require('reduce-object');
+var isObject = require('is-plain-object');
+var hasValue = require('has-value');
+var hasAny = require('has-any');
+
 
 /**
  * ```js
@@ -20,39 +24,33 @@ var reduce = require('reduce-object');
  * @return {Boolean} True if one of the given `keys` exists deeply.
  */
 
-module.exports = function hasAnyDeep(o, props) {
-  props = !Array.isArray(props) ? [props] : props;
-  var len = props.length;
-  var val = false;
-
-  function hasDeep(o, prop) {
-    if (!isObject(o)) {
-      return false;
-    }
-
+module.exports = function hasAnyDeep(obj, props) {
+  function _hasAnyDeep(o, props) {
     return reduce(o, function (acc, value, key) {
-      if (prop === key) {
+      if (props.indexOf(key) !== -1) {
+        return true;
+      } else if (hasAny(value, props)) {
         return true;
       }
 
-      if (isObject(value)) {
-        return hasDeep(value, prop);
+      if (hasValue(value) && isObject(value)) {
+        return _hasAnyDeep(value, props);
+      } else if (props.indexOf(key) !== -1) {
+        return true;
+      } else {
+        return false;
       }
-      return false;
+
+      acc[key] = value;
+      return acc;
     }, {});
   }
 
-  for (var i = 0; i < len; ++i) {
-    val = hasDeep(o, props[i]);
-    if (val === true) {
-      break;
-    }
+  if (hasAny(obj, props)) {
+    return true;
+  } else {
+    return _hasAnyDeep(obj, props);
   }
-  return val;
+
+  return false;
 };
-
-
-function isObject(val) {
-  return {}.toString.call(val).toLowerCase()
-    .replace(/\[object ([\S]+)\]/, '$1') === 'object';
-}

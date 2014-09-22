@@ -1,7 +1,7 @@
 {
   "name": "has-any-deep",
   "description": "Return true if `key` exists deeply on the given object. ",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "homepage": "https://github.com/jonschlinkert/has-any-deep",
   "author": {
     "name": "Jon Schlinkert",
@@ -45,6 +45,9 @@
     "has"
   ],
   "dependencies": {
+    "has-any": "^0.1.0",
+    "has-value": "^0.1.0",
+    "is-plain-object": "^0.1.0",
     "reduce-object": "^0.1.2"
   }
 }
