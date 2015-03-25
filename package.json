@@ -1,7 +1,7 @@
 {
   "name": "has-any-deep",
   "description": "Return true if `key` exists deeply on the given object. ",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "homepage": "https://github.com/jonschlinkert/has-any-deep",
   "author": {
     "name": "Jon Schlinkert",

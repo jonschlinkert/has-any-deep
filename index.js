@@ -9,7 +9,7 @@
 
 var reduce = require('reduce-object');
 var isObject = require('is-plain-object');
-var hasValue = require('has-value');
+var hasValues = require('has-values');
 var hasAny = require('has-any');
 
 
@@ -33,7 +33,7 @@ module.exports = function hasAnyDeep(obj, props) {
         return true;
       }
 
-      if (hasValue(value) && isObject(value)) {
+      if (hasValues(value) && isObject(value)) {
         return _hasAnyDeep(value, props);
       } else if (props.indexOf(key) !== -1) {
         return true;
