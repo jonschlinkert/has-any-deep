@@ -14,23 +14,29 @@
   "bugs": {
     "url": "https://github.com/jonschlinkert/has-any-deep/issues"
   },
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "https://github.com/jonschlinkert/has-any-deep/blob/master/LICENSE-MIT"
-    }
+  "license": {
+    "type": "MIT",
+    "url": "https://github.com/jonschlinkert/has-any-deep/blob/master/LICENSE"
+  },
+  "files": [
+    "index.js"
   ],
   "main": "index.js",
   "engines": {
     "node": ">=0.10.0"
   },
   "scripts": {
-    "test": "mocha -R spec"
+    "test": "mocha"
+  },
+  "dependencies": {
+    "has-any": "^0.1.0",
+    "has-value": "^0.1.0",
+    "is-plain-object": "^0.1.0",
+    "reduce-object": "^0.1.2"
   },
   "devDependencies": {
     "mocha": "*",
-    "should": "^4.0.4",
-    "verb": ">= 0.2.6"
+    "should": "^4.0.4"
   },
   "keywords": [
     "has",
@@ -43,11 +49,5 @@
     "nested",
     "object",
     "has"
-  ],
-  "dependencies": {
-    "has-any": "^0.1.0",
-    "has-value": "^0.1.0",
-    "is-plain-object": "^0.1.0",
-    "reduce-object": "^0.1.2"
-  }
+  ]
 }
